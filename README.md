@@ -43,6 +43,271 @@ int32_t main(){
 }
 ```
 </details>
+</details>
+<details>
+  <summary>
+    Missing Number
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define int long long
+using namespace std;
+int32_t main(){
+    int n=0,temp=0;
+    cin>>n;
+    int sum=0;
+    for(int i=1;i<n;i++){
+        cin>>temp;
+        sum=sum^temp^i;
+    }
+    cout<<(sum^n);
+    return 0;
+}
+```
+  
+</details>
+<details>
+  <summary>
+    Repetition
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define int long long
+using namespace std;
+int32_t main(){
+    string s;
+    cin>>s;
+    int ans=1;
+    int curr=1;
+    for(int i=1;i<s.size();i++) {
+        if (s[i] == s[i - 1])curr++;
+        else curr=1;
+        ans=max(ans,curr);
+    }
+    cout<<ans;
+    return 0;
+}
+```
+  
+</details>
+<details>
+  <summary>
+    Increasing Array
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define vi vector<int>
+#define all(x) x.begin(), x.end()
+#define MOD 1000000007
+#define fastIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define check(x) cout<<#x<<" = "<<x<<'\n'
+#define pii pair<int,int>
+#define ff first
+#define ss second
+#define th third
+#define int long long
+using namespace std;
+int32_t main(){
+    int n=0;
+    cin>>n;
+    vi a(n);
+    for(auto&i:a)cin>>i;
+    int ans=0;
+    for(int i=1;i<n;i++)
+            if(a[i]<a[i-1]){
+                ans+=a[i-1]-a[i];
+                a[i]=a[i-1];
+            }
+    cout<<ans;
+    return 0;
+}
+```
+  
+</details>
+<details>
+  <summary>
+    Permutations
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define vi vector<int>
+#define vvi vector<vi>
+#define pii pair<int,int>
+#define ff first
+#define ss second
+#define MOD 1000000007
+#define all(x) x.begin(),x.end()
+#define fastIO ios_base::sync_with_stdio(false);cin.tie(nullptr);cout.tie(nullptr)
+using namespace std;
+int32_t main(){
+    fastIO;
+    int n=0;
+    cin>>n;
+    if(n==2 or n==3 ){
+        cout<<"NO SOLUTION";
+    }
+    else if(n==4){
+        cout<<"3 1 4 2";
+    }
+    else{
+        for (int i = 1; i <= n; i += 2)
+            cout << i << ' ';
+        for (int i = 2; i <= n; i += 2)
+            cout << i << ' ';
+    }
+    return 0;
+}
+```
+  
+</details>
+<details>
+  <summary>
+    Number Spiral
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define vi vector<int>
+#define vvi vector<vi>
+#define pii pair<int,int>
+#define ff first
+#define ss second
+#define int long long
+#define MOD 1000000007
+#define all(x) x.begin(),x.end()
+#define fastIO ios_base::sync_with_stdio(false);cin.tie(nullptr);cout.tie(nullptr)
+using namespace std;
+int32_t main()
+{
+    fastIO;
+    int t=0;
+    int x=0,y=0;
+    cin>>t;
+    while(t--){
+        cin>>x>>y;
+        int z=max(x,y);
+        if(z&1){
+            cout<<z*z-x-(z-y-1)<<'\n';
+        }else{
+            cout<<z*z-(y-1)-(z-x)<<'\n';
+        }
+    }
+    return 0;
+}
+```
+  
+</details>
+<details>
+  <summary>
+    Two Knights
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define vi vector<int>
+#define all(x) x.begin(), x.end()
+#define MOD 1000000007
+#define fastIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define check(x) cout<<#x<<" = "<<x<<'\n'
+#define pii pair<int,int>
+#define ff first
+#define ss second
+#define th third
+#define int long long
+using namespace std;
+int32_t main(){
+    fastIO;
+    int n=0;
+    cin>>n;
+    for(int k=1;k<=n;k++){
+        int totalPositions=k*k*(k*k-1)/2;
+        int attackPositions=2*2*(k-1)*(k-2);//number of 2*3 and 3*2 rectangles possible in k*k chessboard
+        cout<<totalPositions-attackPositions<<'\n';
+    }
+    return 0;
+}
+```
+  
+</details>
+<details>
+  <summary>
+    Two Sets
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define vi vector<int>
+#define vvi vector<vi>
+#define pii pair<int,int>
+#define ff first
+#define ss second
+#define int long long
+#define MOD 1000000007
+#define all(x) x.begin(),x.end()
+#define fastIO ios_base::sync_with_stdio(false);cin.tie(nullptr);cout.tie(nullptr)
+using namespace std;
+int32_t main(){
+    fastIO;
+    int n=0;
+    cin>>n;
+    int rem=n%4;
+    if(rem==2 or rem==1){
+        cout<<"NO";
+    }else if(rem==3){
+        vi a,b;
+        for(int i=1;i<=n;i++){
+            if(i%4==1 or i%4==2)a.push_back(i);
+            else b.push_back(i);
+        }
+        cout<<"YES\n";
+        cout<<a.size()<<'\n';
+        for(auto&x:a)cout<<x<<' ';
+        cout<<'\n'<<b.size()<<'\n';
+        for(auto&x:b)cout<<x<<' ';
+
+    }
+    else{
+        vi a,b;
+        for(int i=1;i<=n;i++){
+            if(i%4<=1)a.push_back(i);
+            else b.push_back(i);
+        }
+        cout<<"YES\n";
+        cout<<a.size()<<'\n';
+        for(auto&x:a)cout<<x<<' ';
+        cout<<'\n'<<b.size()<<'\n';
+        for(auto&x:b)cout<<x<<' ';
+    }
+    return 0;
+}
+```
+  
+</details>
 
 <details>
   <summary>
