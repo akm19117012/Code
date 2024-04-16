@@ -2,4 +2,4 @@
 # SORTING AND SEARCHING
 ### RELATED ALGORITHMS
 ### PROBLEMS
-[Distinct Numbers](/)
+[Distinct Numbers](/CSES/SearchingAndSorting/DistinctNumbers.cpp)
