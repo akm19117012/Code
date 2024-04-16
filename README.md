@@ -1,3 +1,355 @@
+# Introductory Problems
+<details>
+  <summary>
+    Related Algorithms
+  </summary>
+</details>
+<details>
+  <summary>Good Problems</summary>
+</details>
+
+<details>
+  <summary>
+    Weird Algorithm
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define vi vector<int>
+#define all(x) x.begin(), x.end()
+#define MOD 1000000007
+#define fastIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define check(x) cout<<#x<<" = "<<x<<'\n'
+#define pii pair<int,int>
+#define ff first
+#define ss second
+#define th third
+#define int long long
+using namespace std;
+int32_t main(){
+    fastIO;
+    int n=0;
+    cin>>n;
+    while (n!=1){
+        cout<<n<<' ';
+        if(n&1)n=n*3+1;
+        else n>>=1;
+    }
+    cout<<1;
+    return 0;
+}
+```
+</details>
+
+<details>
+  <summary>
+    Bit String
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define MOD 1000000007
+#define fastIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define int long long
+using namespace std;
+int binExp(int a,int b,int m){
+    a%=m;
+    int res=1;
+    while (b){
+        if(b&1)res=res*a%m;
+        a=a*a%m;
+        b>>=1;
+    }
+    return res;
+}
+int32_t main(){
+    fastIO;
+    int n=0;
+    cin>>n;
+    cout<<binExp(2,n,MOD);
+    return 0;
+}
+```
+  
+</details>
+<details>
+  <summary>
+    Trailing Zeroes
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define vi vector<int>
+#define all(x) x.begin(), x.end()
+#define MOD 1000000007
+#define fastIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define check(x) cout<<#x<<" = "<<x<<'\n'
+#define pii pair<int,int>
+#define ff first
+#define ss second
+#define th third
+#define int long long
+using namespace std;
+int32_t main(){
+    int n=0;
+    cin>>n;
+    int ans=0;
+    while (n){
+        ans+=n/5;
+        n/=5;
+    }
+    cout<<ans;
+    return 0;
+}
+```
+  
+</details>
+<details>
+  <summary>
+    Coin Piles
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define vi vector<int>
+#define all(x) x.begin(), x.end()
+#define MOD 1000000007
+#define fastIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define check(x) cout<<#x<<" = "<<x<<'\n'
+#define pii pair<int,int>
+#define ff first
+#define ss second
+#define th third
+#define int long long
+using namespace std;
+int32_t main(){
+    fastIO;
+    int t=0,a=0,b=0;
+    cin>>t;
+    while (t--){
+        cin>>a>>b;
+        (a+b)%3==0 and max(a,b)<=2*min(a,b) ?cout<<"YES\n":cout<<"NO\n";
+    }
+    return 0;
+}
+```
+  
+</details>
+<details>
+  <summary>
+    Plaindrome Reorder
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define int long long
+using namespace std;
+void printChars(char ch,int n){
+    while (n--)cout<<ch;
+}
+int32_t main(){
+    string s;
+    cin>>s;
+    int freq[26]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    for(auto&ch:s)freq[ch-'A']++;
+    int odd=0;
+    char och='.';
+    for(int i=0;i<26;i++){
+        if(freq[i]&1){
+            odd++;
+            och=char (65+i);
+            freq[i]--;
+        }
+    }
+    if(odd>1){
+        cout<<"NO SOLUTION";
+        return 0;
+    }
+    for(int i=0;i<26;i++){
+        if(!(freq[i]&1)){
+            freq[i]>>=1;
+            printChars(i+'A',freq[i]);
+        }
+    }
+    if(och!='.')cout<<och;
+    for(int i=25;i>=0;i--){
+            printChars(i+'A',freq[i]);
+    }
+    return 0;
+}
+```
+  
+</details>
+<details>
+  <summary>
+    Gray Code
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+// LOGIC https://www.geeksforgeeks.org/cses-solutions-gray-code/
+#include <bits/stdc++.h>
+#define all(x) x.begin(),x.end()
+#define check(x) cout<<#x<<" = "<<x
+using namespace std;
+vector<string>solve(int n){
+    if(n==1)return {"0","1"};
+    auto prevGC= solve(n-1);
+    auto revGC=prevGC;
+    reverse(all(revGC));
+    for(int i=0;i<prevGC.size();i++){
+        revGC[i]="1"+revGC[i];
+        prevGC[i]="0"+prevGC[i];
+    }
+    revGC.insert(revGC.end(),all(prevGC));
+    return revGC;
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    int n =0;
+    cin>>n;
+    auto ans=solve(n);
+    for(auto&x:ans)cout<<x<<'\n';
+    return 0;
+}
+```
+  
+</details>
+<details>
+  <summary>
+    Tower of Hanoi
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define vi vector<int>
+#define all(x) x.begin(), x.end()
+#define MOD 1000000007
+#define fastIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define check(x) cout<<#x<<" = "<<x<<'\n'
+#define pii pair<int,int>
+#define ff first
+#define ss second
+#define th third
+#define int long long
+using namespace std;
+vector<pii>ans;
+void solve(int n,int src,int help,int dest,vector<stack<int>>&vs){
+    if(n==0)return;
+    if(n==1){
+        ans.push_back({src+1,dest+1});
+        vs[dest].push(vs[src].top());
+        vs[src].pop();
+        return;
+    }
+    solve(n-1,src,dest,help,vs);
+    ans.push_back({src+1,dest+1});
+    vs[dest].push(vs[src].top());
+    vs[src].pop();
+    solve(n-1,help,src,dest,vs);
+}
+int32_t main(){
+    fastIO;
+    int n=0;
+    cin>>n;
+    stack<int>a,b,c;
+    for(int i=n;i>0;i--)a.push(i);
+    vector<stack<int>>vs({a,b,c});
+
+    solve(n,0,1,2,vs);
+    cout<<ans.size()<<'\n';
+    for(auto&p:ans)
+        cout<<p.ff<<' '<<p.ss<<'\n';
+    return 0;
+}
+```
+  
+</details>
+
+<details>
+  <summary>
+    Apple Division
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+#include<bits/stdc++.h>
+#define vi vector<int>
+#define all(x) x.begin(), x.end()
+#define MOD 1000000007
+#define fastIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define check(x) cout<<#x<<" = "<<x<<'\n'
+#define pii pair<int,int>
+#define ff first
+#define ss second
+#define th third
+#define int long long
+using namespace std;
+//vector<vector<int>>dp;
+int help(vector<int> a,int n,int&total,int sum1){
+    if(n==0){
+        int sum2=total-sum1;
+        return abs(sum1-sum2);
+    }
+//    if(dp[n][sum1]!=-1)return dp[n][sum1];
+    return min(help(a,n-1,total,sum1+a[n-1]), help(a,n-1,total,sum1));
+}
+int32_t main(){
+    int n=0;
+    cin>>n;
+    vi a(n);
+    int total=0;
+    for(auto&i:a) {
+        cin >> i;
+        total+=i;
+    }
+//    dp.assign(n+1,vector<int>(total+1,-1));
+    cout<<help(a,n,total,0);
+    return 0;
+}
+```
+  
+</details>
+
+<details>
+  <summary>
+    
+  </summary>
+
+  ### IDEA
+
+  ### CODE
+```C++
+
+```
+  
+</details>
+
 # Sorting and Searching
 <details>
   <summary>Related Algorithms</summary>
